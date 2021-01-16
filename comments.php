@@ -82,15 +82,15 @@
             <svg style="width:80px" viewBox="0 0 24 24">
                 <path fill="#444444" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
             </svg>
-            <input type="text" name="author" id="author" class="text" value="<?php $this->remember('author'); ?>" placeholder="<?php _e('称呼'); ?>" required />
+            <input type="text" name="author" id="author" class="text" value="<?php $this->remember('author'); ?>" placeholder="名字" required />
             
             <!-- Avatar info -->
-            <svg onclick="changeCommentAvatarMode()" style="width:80px;cursor:pointer;" viewBox="0 0 24 24">
+            <svg style="width:80px;" viewBox="0 0 24 24">
                 <path id="avatarMode" fill="#444444" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
             </svg>
 
             <input type="email" name="mail" id="mail" class="text"
-                placeholder="← 使用QQ头像"
+                placeholder="邮箱／QQ"
                 value="<?php $this->remember('mail'); ?>" <?php if ($this->options->commentsRequireMail): ?> required<?php endif; ?> />
             
             <!-- Website info -->
@@ -99,7 +99,7 @@
             </svg>
 
             <input type="url" name="url" id="url" class="text" style="margin-right: 0;"
-                placeholder="<?php _e('网站'); ?>"
+                placeholder="域名"
                 value="<?php $this->remember('url'); ?>" <?php if ($this->options->commentsRequireURL): ?> required<?php endif; ?> />
         
         <?php endif; ?>

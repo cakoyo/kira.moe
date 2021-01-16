@@ -17,13 +17,6 @@ function themeConfig($form) {
 }
 
 function themeFields($layout) {
-    ?>
-<style>
-#custom-field input {
-    width: 100%;
-}
-</style>
-<?php
     $previewImage = new Typecho_Widget_Helper_Form_Element_Text('previewImage', NULL, NULL, "文章封面图", "在此填入一个图片地址以显示文章封面图，留空不显示");
     $layout->addItem($previewImage);
     //⑨BIE的魔改
@@ -61,14 +54,15 @@ if ($comments->levels > 0) {
 $comments->alt(' comment-odd', ' comment-even');
 echo $commentClass;
 ?>">
+
     <div class="a-comment">
         <div class="comment-element" id="<?php $comments->theId(); ?>">
             <div class="comment-container">
                 <div class="comment-author-avatar">
                     <a target="_blank" href="<?php echo $comments->url; ?>"><?php
                     $mail=$comments->mail;
-                    $mail = explode("@",$mail); 
-                    if($mail[1]=="qq.com"){
+                    $mail = explode("@", $mail); 
+                    if ($mail[1] == "qq.com"){
                         echo '<img class="avatar" src="https://q2.qlogo.cn/headimg_dl? bs='.$mail[0].'&dst_uin='.$mail[0].'&spec=100&url_enc=0&referer=bu_interface&term_type=PC" width="55px" height="55px">';
                     }else{
                         //直接用原生头像函数获取
@@ -99,6 +93,13 @@ echo $commentClass;
     </div>
     <?php } ?>
 </li>
+
+<style>
+#custom-field input {
+    width: 100%;
+}
+</style>
+
 <?php }
 
 function time2Units($time)  { 
@@ -131,4 +132,8 @@ function time2Units($time)  {
 
 function timestampToDate($time) {
     return date('Y年m月s日', $time);
+}
+
+function isArticleOutdated($time) {
+    return time() - $time > 2580000; // one month in sec
 }

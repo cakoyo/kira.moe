@@ -61,3 +61,13 @@
     margin-left: 5px;
     display: inline;
 }
+
+.post-outdated {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    border-left: 3px solid grey;
+    font-size: 1.1em;
+    color: grey;
+    border-bottom: 1px solid #EEE;
+}

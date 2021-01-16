@@ -8,6 +8,12 @@
         <div class="post-row">
 
             <div id="main-expand">
+                <?php if (isArticleOutdated($this->created)): ?>
+                    <div class="post-outdated">
+                        此文章发布于<?php echo time2Units(time() - $this->created) ?>前，其中某些内容可能过时，或与作者现时观点不同。
+                    </div>
+                <?php endif; ?>
+
                 <article class="post-expand">
                     <!-- cover and title -->
                     <?php if ($this->fields->previewImage && $this->fields->previewImage !== ""): ?>
