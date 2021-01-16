@@ -18,12 +18,12 @@ function themeConfig($form) {
 
 function themeFields($layout) {
     ?>
-    <style>
-    #custom-field input{
-        width:100%;
-    }
-    </style>
-    <?php
+<style>
+#custom-field input {
+    width: 100%;
+}
+</style>
+<?php
     $previewImage = new Typecho_Widget_Helper_Form_Element_Text('previewImage', NULL, NULL, "文章封面图", "在此填入一个图片地址以显示文章封面图，留空不显示");
     $layout->addItem($previewImage);
     //⑨BIE的魔改
@@ -50,7 +50,7 @@ function threadedComments($comments, $options) {
  
     $commentLevelClass = $comments->levels > 0 ? ' comment-child' : ' comment-parent';
 ?>
- 
+
 <li id="li-<?php $comments->theId(); ?>" class="comment-body<?php 
 if ($comments->levels > 0) {
     echo ' comment-child';
@@ -87,20 +87,21 @@ echo $commentClass;
                 </div>
             </div>
         </div>
-        <a class="comment-reply" onclick="TypechoComment.reply('<?php $comments->theId(); ?>', <?php echo explode("-",$comments->theId)[1]; ?>);"><svg style="width:50px;height:22px" viewBox="0 0 24 24">
-    <path fill="#666" d="M10,9V5L3,12L10,19V14.9C15,14.9 18.5,16.5 21,20C20,15 17,10 10,9Z" />
-</svg></a> 
+        <a class="comment-reply"
+            onclick="TypechoComment.reply('<?php $comments->theId(); ?>', <?php echo explode("-",$comments->theId)[1]; ?>);"><svg
+                style="width:50px;height:22px" viewBox="0 0 24 24">
+                <path fill="#666" d="M10,9V5L3,12L10,19V14.9C15,14.9 18.5,16.5 21,20C20,15 17,10 10,9Z" />
+            </svg></a>
     </div>
-<?php if ($comments->children) { ?>
+    <?php if ($comments->children) { ?>
     <div class="comment-children">
         <?php $comments->threadedComments($options); ?>
     </div>
-<?php } ?>
+    <?php } ?>
 </li>
 <?php }
 
-function time2Units($time) 
-{ 
+function time2Units($time)  { 
    $year   = floor($time / 60 / 60 / 24 / 365); 
    $time  -= $year * 60 * 60 * 24 * 365; 
    $month  = floor($time / 60 / 60 / 24 / 30); 
@@ -118,8 +119,7 @@ function time2Units($time)
    $unitArr = array('年'  =>'year', '个月'=>'month',  '周'=>'week', '天'=>'day', 
                     '小时'=>'hour', '分钟'=>'minute', '秒'=>'second' 
                     ); 
-   foreach ( $unitArr as $cn => $u ) 
-   { 
+   foreach ( $unitArr as $cn => $u ) { 
        if ( $$u > 0 ) 
        { 
            $elapse = $$u . $cn; 
@@ -127,4 +127,8 @@ function time2Units($time)
        } 
    } 
    return $elapse; 
+}
+
+function timestampToDate($time) {
+    return date('Y年m月s日', $time);
 }
